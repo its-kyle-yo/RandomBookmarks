@@ -1,18 +1,15 @@
-chrome.runtime.onInstalled.addListener(function() {
-  chrome.bookmarks.getTree(((data) => {
+chrome.runtime.onStartup.addListener(function() {
+  chrome.bookmarks.getTree((data) => {
     let bookmarks = [];
     if(data){
-      data[0].children.forEach((bookmarkGroups) => {
-        bookmarkGroups.children.forEach((bookmark) => {
-          bookmarks.push({title: bookmark.title, url: bookmark.url});
-        });
-      });
+      data[0].children.forEach((folder) => {
+        bookmarks.push(folder.children)
+      })
     }
-
     chrome.storage.local.set({bookmarks: bookmarks}, () => {
-      console.log('Storage set');
+      console.log('Storage set', bookmarks);
     });
-  }));
+  });
 
   chrome.declarativeContent.onPageChanged.removeRules();
 });

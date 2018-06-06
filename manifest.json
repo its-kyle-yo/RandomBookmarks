@@ -9,7 +9,7 @@
     "persistent": false
   },
   "browser_action": {
-    "scripts": ["popup.js"],
+    "scripts": ["popup-bundle.js"],
     "default_popup": "popup.html",
     "default_icon": {
       "16": "images/get_started16.png",

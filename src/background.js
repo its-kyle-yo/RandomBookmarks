@@ -1,4 +1,4 @@
-chrome.runtime.onStartup.addListener(function() {
+chrome.runtime.onInstalled.addListener(function() {
   chrome.bookmarks.getTree((data) => {
     let bookmarks = [];
     if(data){

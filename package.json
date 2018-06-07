@@ -8,7 +8,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build":  "browserify src/background.js src/popup.js -o public/background-bundle.js public/popup-bundle.js",
+    "package": "npm run build; zip -r -X bundle.zip public manifest.json"
   },
   "repository": {
     "type": "git",
